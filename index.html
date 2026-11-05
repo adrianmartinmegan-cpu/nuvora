@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUVORA · Casa sin corrientes</title>
+<meta name="description" content="Kit para tapar las rendijas de puertas y ventanas por donde entra el frío. Apúntate y te avisamos cuando esté disponible.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1712; --soft: #5e5248; --paper: #f6efe5; --card: #fffaf3; --line: #e6d8c6;
+    --night: #1d2230; --warm: #e8742c; --warm-soft: #fbe3d2;
+    --ease: cubic-bezier(.2,.8,.2,1); --r: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font: 17px/1.6 "DM Sans", system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.08; letter-spacing: -.02em; margin: 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--warm); margin: 0 0 14px; }
+
+  header.top { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+  .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 22px; letter-spacing: .06em; text-decoration: none; }
+  .top nav { display: flex; gap: 20px; font-size: 15px; font-weight: 500; }
+  .top nav a { text-decoration: none; color: var(--soft); transition: color .16s ease; }
+  .top nav a:hover { color: var(--ink); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 700; text-decoration: none; border: 0; cursor: pointer; font: inherit; font-weight: 700; transition: transform .16s var(--ease), opacity .16s ease; }
+  .btn:hover { opacity: .9; }
+  .btn:active { transform: scale(.97); }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+
+  .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 5vw, 64px); align-items: center; padding: clamp(16px, 4vw, 48px) 0 clamp(48px, 7vw, 96px); }
+  .hero h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 20px; text-wrap: balance; }
+  .hero p.lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--soft); max-width: 46ch; margin: 0 0 30px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-media { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 9 / 13; background: var(--night); max-height: 620px; justify-self: center; width: min(100%, 430px); }
+  .hero-media video { width: 100%; height: 100%; object-fit: cover; }
+  .tag { position: absolute; left: 14px; bottom: 14px; background: rgb(28 23 18 / .72); color: #fff; font-size: 12.5px; padding: 6px 11px; border-radius: 999px; }
+
+  section { padding: clamp(56px, 8vw, 104px) 0; }
+  .test { background: var(--night); color: #f2ece4; }
+  .test .eyebrow { color: #f3a46e; }
+  .test h2 { font-size: clamp(30px, 4vw, 46px); max-width: 18ch; margin-bottom: 14px; }
+  .test p.intro { color: #c9c2b8; max-width: 52ch; margin: 0 0 40px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card { background: #262c3d; border-radius: var(--r); overflow: hidden; }
+  .card img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+  .card div { padding: 18px 20px 22px; }
+  .card h3 { font-size: 21px; margin-bottom: 6px; }
+  .card p { margin: 0; color: #c9c2b8; font-size: 15.5px; }
+
+  .kit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+  .kit h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
+  .kit ul { list-style: none; padding: 0; margin: 0 0 28px; }
+  .kit li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .kit li b { display: block; }
+  .kit li span.n { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--warm-soft); color: var(--warm); display: grid; place-items: center; font-weight: 700; }
+  .kit li small { color: var(--soft); font-size: 15px; }
+  .kit-img { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; }
+  .kit-img img { width: 100%; height: 100%; object-fit: cover; }
+  .status { display: inline-block; background: var(--warm-soft); color: #9a4614; font-weight: 700; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; margin-bottom: 18px; }
+
+  .manta { background: var(--card); border-block: 1px solid var(--line); }
+  .manta h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 10px; }
+  .manta p.intro { color: var(--soft); max-width: 52ch; margin: 0 0 36px; }
+  .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid6 figure { margin: 0; }
+  .grid6 img { border-radius: 14px; aspect-ratio: 1; object-fit: cover; width: 100%; transition: transform .24s var(--ease); }
+  @media (hover: hover) { .grid6 figure:hover img { transform: scale(1.02); } }
+  .grid6 figcaption { font-weight: 700; margin-top: 10px; }
+
+  .faq h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 28px; }
+  details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  summary { cursor: pointer; font-weight: 700; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--warm); font-size: 24px; line-height: 1; transition: transform .2s var(--ease); }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 12px 0 0; color: var(--soft); max-width: 70ch; }
+
+  .join { background: var(--warm); color: var(--ink); text-align: center; }
+  .join h2 { font-size: clamp(32px, 4.6vw, 54px); margin: 0 auto 14px; max-width: 18ch; }
+  .join p { margin: 0 auto 30px; max-width: 48ch; }
+  .join .btn { background: var(--ink); }
+  .join .btn.ghost { background: transparent; box-shadow: inset 0 0 0 2px var(--ink); color: var(--ink); }
+  .join .cta-row { justify-content: center; }
+
+  footer { padding: 36px 0 48px; font-size: 14px; color: var(--soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .hero, .kit { grid-template-columns: 1fr; }
+    .hero-media { order: -1; aspect-ratio: 4 / 5; }
+    .cards, .grid6 { grid-template-columns: 1fr 1fr; }
+    .cards .card:last-child { grid-column: span 2; }
+    .top nav a:not(:last-child) { display: none; }
+  }
+  @media (max-width: 520px) { .cards, .grid6 { grid-template-columns: 1fr; } .cards .card:last-child { grid-column: auto; } .btn { width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#">NUVORA</a>
+    <nav><a href="#prueba">La prueba</a><a href="#kit">El kit</a><a href="#manta">Temporada de manta</a><a href="#avisame">Avísame</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Invierno 2026 · casa sin corrientes</p>
+      <h1>El frío no entra por las paredes. Entra por las rendijas.</h1>
+      <p class="lead">Debajo de la puerta, en el marco de la ventana, en esa esquina donde siempre hay humedad. Un kit sencillo para taparlas tú mismo en diez minutos, sin obras ni herramientas.</p>
+      <div class="cta-row">
+        <a class="btn" href="#avisame">Avísame cuando esté</a>
+        <a class="btn ghost" href="#prueba">Haz la prueba de la vela</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <video src="img/vela.mp4" poster="img/nuvora-corrientes-vela.jpg" autoplay muted loop playsinline aria-label="Una vela junto a la puerta: la llama se tumba por la corriente"></video>
+      <span class="tag">Imagen generada con IA</span>
+    </div>
+  </div>
+</div>
+
+<section class="test" id="prueba">
+  <div class="wrap">
+    <p class="eyebrow">Compruébalo en casa, gratis</p>
+    <h2>Tres pruebas para saber por dónde se escapa el calor.</h2>
+    <p class="intro">No hace falta comprar nada para saberlo. Hazlas una noche de viento con las ventanas cerradas.</p>
+    <div class="cards">
+      <article class="card reveal"><img src="img/nuvora-corrientes-vela.jpg" alt="Vela encendida junto al suelo, al lado de una puerta" loading="lazy"><div><h3>La vela</h3><p>Ponla en el suelo junto a la puerta. Si la llama se tumba hacia dentro, por ahí entra aire.</p></div></article>
+      <article class="card reveal"><img src="img/nuvora-corrientes-humo.jpg" alt="Humo de incienso desviado junto al marco de una ventana" loading="lazy"><div><h3>El humo</h3><p>Acerca una varilla de incienso al marco de la ventana. Si el humo se desvía, hay una rendija.</p></div></article>
+      <article class="card reveal"><img src="img/nuvora-corrientes-ventana.jpg" alt="Ventana empañada con gotas de condensación" loading="lazy"><div><h3>La luz</h3><p>Apaga la luz de casa y deja encendida la del pasillo. Si ves una raya de luz bajo la puerta, también pasa el frío.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="kit">
+  <div class="wrap kit">
+    <div class="kit-img reveal"><img src="img/nuvora-corrientes-sofa.jpg" alt="Persona tapada con una manta en el sofá en una casa fría" loading="lazy"></div>
+    <div>
+      <span class="status">Próximamente · aún no se puede comprar</span>
+      <h2>El kit Sin corrientes</h2>
+      <ul>
+        <li><span class="n">1</span><div><b>Burlete doble para la puerta</b><small>Se mete por debajo de la hoja y sella por los dos lados. Se corta a la medida de tu puerta.</small></div></li>
+        <li><span class="n">2</span><div><b>Cinta adhesiva para rendijas</b><small>Para el marco de ventanas y puertas. Se pega y se quita sin dejar marca en superficies lisas.</small></div></li>
+        <li><span class="n">3</span><div><b>Sin obras ni herramientas</b><small>Unas tijeras y diez minutos. Pensado para pisos de alquiler.</small></div></li>
+      </ul>
+      <a class="btn" href="#avisame">Quiero que me aviséis</a>
+    </div>
+  </div>
+</section>
+
+<section class="manta" id="manta">
+  <div class="wrap">
+    <p class="eyebrow">También estamos preparando</p>
+    <h2>Temporada de manta</h2>
+    <p class="intro">Diseños propios para sudaderas, tazas y mantas, impresos uno a uno bajo pedido. Para gente (y gatos) que este invierno no piensa salir de casa.</p>
+    <div class="grid6">
+      <figure class="reveal"><img src="img/nuvora-manta-manta.jpg" alt="Diseño Temporada de manta: gato bajo una manta de cuadros" loading="lazy"><figcaption>Temporada de manta</figcaption></figure>
+      <figure class="reveal"><img src="img/nuvora-manta-nosalgo.jpg" alt="Diseño No salgo. Hace frío. Firmado: el gato" loading="lazy"><figcaption>No salgo. Hace frío.</figcaption></figure>
+      <figure class="reveal"><img src="img/nuvora-manta-calefaccion.jpg" alt="Diseño Calefacción on, gato encima" loading="lazy"><figcaption>Calefacción: on</figcaption></figure>
+      <figure class="reveal"><img src="img/nuvora-manta-hibernando.jpg" alt="Diseño Hibernando, no molestar hasta marzo" loading="lazy"><figcaption>Hibernando</figcaption></figure>
+      <figure class="reveal"><img src="img/nuvora-manta-planazo.jpg" alt="Diseño Mi plan para este invierno: manta, gato y café" loading="lazy"><figcaption>Mi plan para este invierno</figcaption></figure>
+      <figure class="reveal"><img src="img/nuvora-manta-perro.jpg" alt="Diseño Volvemos empapados, volvemos felices" loading="lazy"><figcaption>Volvemos empapados</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>Preguntas</h2>
+    <details><summary>¿Cuánto voy a ahorrar en calefacción?</summary><p>No te vamos a prometer una cifra: depende de tu casa, de tus ventanas y de cuánto pongas la calefacción. Lo que sí hace el kit es tapar huecos por los que entra aire frío. Haz la prueba de la vela antes y después y juzga tú.</p></details>
+    <details><summary>¿Cuándo se podrá comprar?</summary><p>Estamos cerrando el proveedor y las pruebas de calidad. Si te apuntas, te escribimos un único correo cuando esté disponible, con el precio final y el plazo de entrega.</p></details>
+    <details><summary>¿Sirve para pisos de alquiler?</summary><p>Sí. No hay que taladrar ni pegar nada en la hoja de la puerta: el burlete se mete por debajo y se saca cuando quieras.</p></details>
+    <details><summary>¿Las imágenes son reales?</summary><p>Las escenas de esta página y de nuestros vídeos están generadas con IA para explicar el problema. Cuando el kit esté a la venta, enseñaremos fotos del producto real.</p></details>
+  </div>
+</section>
+
+<section class="join" id="avisame">
+  <div class="wrap">
+    <h2>¿Te avisamos cuando esté?</h2>
+    <p>Escríbenos con un «avísame» y te mandamos un único mensaje cuando el kit esté disponible. Sin newsletters ni spam.</p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:nuvora122@gmail.com?subject=Av%C3%ADsame%20-%20kit%20Sin%20corrientes&body=Hola%2C%20quiero%20que%20me%20avis%C3%A9is%20cuando%20el%20kit%20Sin%20corrientes%20est%C3%A9%20disponible.">Avísame por email</a>
+      <a class="btn ghost" href="https://www.instagram.com/itsnuvora_/" rel="noopener">Escríbenos en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 NUVORA · Valencia</span>
+    <nav><a href="legal.html">Aviso legal</a><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#cookies">Cookies</a><a href="mailto:nuvora122@gmail.com">nuvora122@gmail.com</a></nav>
+  </div>
+</footer>
+
+<script>
+  const io = 'IntersectionObserver' in window && new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
